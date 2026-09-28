@@ -5,6 +5,19 @@
   "type": "module",
   "private": false,
   "license": "MIT",
+  "exports": {
+    ".": "./src/audit.js",
+    "./report": "./src/report.js",
+    "./bots": "./src/bots.js",
+    "./scoring": "./src/scoring.js"
+  },
+  "files": [
+    "src",
+    "docs",
+    "prompts",
+    "LICENSE",
+    "README.md"
+  ],
   "engines": {
     "node": ">=20.11"
   },
