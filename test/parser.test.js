@@ -14,6 +14,11 @@ test("HTML sinyallerini ayrıştırır", () => {
   assert.equal(page.jsonLd[0].gecerli, true);
 });
 
+test("şirket olmayan gerçek site ve kişi kimliğini varlık sinyali sayar", () => {
+  const page = parseHtml(`<html lang="tr"><head><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Örnek"},{"@type":"Person","name":"Ada"}]}</script></head><body><a href="/">Örnek</a></body></html>`, "https://example.com/");
+  assert.equal(page.organizationSignals, true);
+});
+
 test("sitemap ve robots sitemap satırlarını ayrıştırır", () => {
   assert.deepEqual(sitemapLocations("User-agent: *\nSitemap: https://a.test/sitemap.xml"), ["https://a.test/sitemap.xml"]);
   const result = parseSitemap(`<?xml version="1.0"?><urlset><url><loc>https://a.test/</loc></url></urlset>`);

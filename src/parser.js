@@ -43,7 +43,7 @@ export function parseHtml(html, pageUrl) {
     authorSignals: /\b(author|yazar|written by)\b/i.test(clean),
     dateSignals: /<time\b|datePublished|dateModified|yayın tarihi|güncellendi/i.test(clean),
     sourceSignals: /\b(kaynakça|kaynaklar|references|bibliography)\b/i.test(visible),
-    organizationSignals: /Organization|LocalBusiness|kurumsal|hakkımızda|about us/i.test(clean)
+    organizationSignals: /Organization|LocalBusiness|WebSite|SoftwareApplication|Person|\bcreator\b|\bpublisher\b|kurumsal|hakkımızda|about us/i.test(clean)
   };
 }
 
