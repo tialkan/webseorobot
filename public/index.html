@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WebSEORobot — Canlı SEO ve kaynak olabilirlik denetimi</title>
+  <meta name="description" content="Sitenizin arama motorları ve kaynak gösteren yapay zekâ sistemleri tarafından bulunabilirliğini canlı yanıtlarla denetleyin.">
+  <link rel="canonical" href="https://tezatlas.com/webseorobot">
+  <meta property="og:title" content="WebSEORobot — kanıta dayalı açık kaynak site denetimi">
+  <meta property="og:description" content="Tek adres girin; teknik SEO, canonical, sitemap ve yapay zekâ tarayıcı tercihlerini kanıtlarıyla görün.">
+  <meta property="og:image" content="https://tezatlas.com/webseorobot/og.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/webseorobot/styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"WebSEORobot","applicationCategory":"DeveloperApplication","operatingSystem":"Web","isAccessibleForFree":true,"url":"https://tezatlas.com/webseorobot","codeRepository":"https://github.com/tialkan/webseorobot","publisher":{"@type":"Organization","name":"TezAtlas","url":"https://tezatlas.com"}}</script>
+</head>
+<body>
+  <a class="skip" href="#icerik">İçeriğe geç</a>
+  <aside class="rail">
+    <a class="brand" href="https://tezatlas.com" aria-label="TezAtlas ana sayfa">TezAtlas<span></span></a>
+    <p class="eyebrow">AÇIK KAYNAK · CANLI DENETİM</p>
+    <nav aria-label="Sayfa bölümleri">
+      <a class="active" href="#denetle"><i class="shape square"></i>Siteyi denetle</a>
+      <a href="#nasil"><i class="shape arc"></i>Nasıl çalışır?</a>
+      <a href="#alanlar"><i class="shape dots"></i>Denetim alanları</a>
+      <a href="#sinirlar"><i class="shape half"></i>Sınırlar</a>
+      <a href="https://github.com/tialkan/webseorobot"><i class="shape circle"></i>GitHub ↗</a>
+    </nav>
+    <div class="rail-bottom">
+      <a href="https://tezatlas.com">TezAtlas’a dön ↗</a>
+      <p>ÜCRETSİZ · HESAP GEREKMEZ</p>
+    </div>
+  </aside>
+
+  <main id="icerik">
+    <section class="hero" id="denetle">
+      <div class="rings ring-one"></div><div class="rings ring-two"></div><div class="dot mint"></div>
+      <div class="hero-copy">
+        <span class="label">WEBSEOROBOT · 0.1</span>
+        <h1>Sitenizi,<br><em>kanıtıyla</em> görün.</h1>
+        <p>Arama motorlarının ve kaynak gösteren yapay zekâ sistemlerinin önündeki teknik engelleri canlı yanıtlarla bulur. Garanti vermez; ne gördüğünü açıklar.</p>
+        <form id="audit-form" novalidate>
+          <label for="site-url">Denetlenecek site</label>
+          <div class="url-row">
+            <input id="site-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="ornek.com" required aria-describedby="url-help">
+            <button type="submit">Siteyi denetle <span>→</span></button>
+          </div>
+          <small id="url-help">Kayıt yok. Şifreli veya özel sayfalara erişilmez.</small>
+        </form>
+      </div>
+      <div class="proof-card" aria-label="Denetim ilkesi">
+        <p class="eyebrow">TEMEL İLKE</p>
+        <strong>Kaynak kodda doğru görünmesi yetmez.</strong>
+        <p>HTTP, HTTPS, www, yönlendirme ve canonical davranışı canlı olarak sınanır.</p>
+        <div class="proof-line"><span>01</span><b>Canlı istek</b></div>
+        <div class="proof-line"><span>02</span><b>Görülebilir kanıt</b></div>
+        <div class="proof-line"><span>03</span><b>Öncelikli çözüm</b></div>
+      </div>
+    </section>
+
+    <section class="progress-panel hidden" id="progress" aria-live="polite">
+      <div class="progress-head"><span class="spinner"></span><div><p class="eyebrow">DENETİM SÜRÜYOR</p><h2 id="progress-title">Adresi güvenli biçimde doğruluyoruz…</h2></div><b id="progress-percent">08%</b></div>
+      <div class="progress-track"><span id="progress-bar"></span></div>
+      <p id="progress-note">Yerel ve özel ağ hedefleri engellenir.</p>
+    </section>
+
+    <section class="results hidden" id="results" aria-live="polite">
+      <div class="section-head"><div><p class="eyebrow">CANLI RAPOR</p><h2>Tek puan değil, altı ayrı cevap.</h2></div><div class="actions"><button class="ghost" id="download-json">JSON indir</button><button class="ghost" id="download-md">Markdown indir</button><button class="primary" id="copy-prompt">Düzeltme istemini kopyala</button></div></div>
+      <div class="summary-strip" id="summary"></div>
+      <div class="score-grid" id="scores"></div>
+      <div class="finding-tools"><h3>Öncelikli bulgular</h3><div id="filters" role="group" aria-label="Bulgu filtresi"><button class="selected" data-filter="tumu">Tümü</button><button data-filter="kritik">Kritik</button><button data-filter="yüksek">Yüksek</button><button data-filter="orta">Orta</button></div></div>
+      <div id="findings"></div>
+      <details class="machine-details"><summary>Yapay zekâ tarayıcı tercihleri <span>arama · kullanıcı erişimi · model geliştirme</span></summary><div id="bots"></div></details>
+      <p class="limit-note">Bu araç sıralama veya dizine alınma garantisi vermez. İçerik doğruluğu ve özgünlüğü insan incelemesi gerektirir.</p>
+    </section>
+
+    <section class="explain" id="nasil">
+      <div class="section-head"><div><p class="eyebrow">ÜÇ ADIM</p><h2>Adres gir. Kanıtı gör. Düzelt.</h2></div><p>Teknik ayrıntıyı saklamadan, SEO terimi bilmeyen birinin de karar verebileceği dille.</p></div>
+      <div class="steps"><article><span>01</span><h3>Canlı davranışı sınar</h3><p>Alan adı sürümlerini, yönlendirmeleri, robots ve önemli sayfaları sınırlı bir örneklemle açar.</p></article><article><span>02</span><h3>Kanıtı bağlar</h3><p>Her bulgu URL, durum kodu ve bulunan işaretle birlikte gelir. Tahmin kanıt gibi sunulmaz.</p></article><article><span>03</span><h3>İşi devredilebilir kılar</h3><p>Raporu JSON/Markdown indirin veya düzeltme istemini doğrudan kod ajanınıza verin.</p></article></div>
+    </section>
+
+    <section class="fields" id="alanlar">
+      <p class="eyebrow">DENETİM ALANLARI</p><h2>Bulunmak için gereken<br>altyapının haritası.</h2>
+      <div class="field-grid"><article class="purple"><b>01</b><h3>Erişilebilirlik</h3><p>HTTP, HTTPS, yönlendirme zinciri, HSTS ve canlı durum kodları.</p></article><article class="coral"><b>02</b><h3>İndekslenebilirlik</h3><p>robots.txt, noindex, X-Robots-Tag, sitemap ve önemli adres örneklemi.</p></article><article class="yellow"><b>03</b><h3>Kanoniklik</h3><p>www/çıplak alan adı, canonical hedefleri ve çelişen sinyaller.</p></article><article class="mint-card"><b>04</b><h3>Anlaşılabilirlik</h3><p>Başlık, açıklama, dil, başlık yapısı, görsel ve yapılandırılmış veri.</p></article><article><b>05</b><h3>Kanıtlanabilirlik</h3><p>Kurum kimliği, yazar, tarih, kaynak ve şeffaflık işaretleri.</p></article><article><b>06</b><h3>Özgünlük</h3><p>İnce içerik ve yinelenen kalıplar için ölçülü, insan incelemeli uyarılar.</p></article></div>
+    </section>
+
+    <section class="manifesto" id="sinirlar"><div><p class="eyebrow">NE YAPMAZ?</p><h2>Bilimsel görünmeye çalışan uydurma bir “AI görünürlük puanı” vermez.</h2></div><p><code>llms.txt</code> yardımcı bir makine-okunabilir kaynak olabilir; temel SEO’nun yerine geçmez. Bir sayfanın robots.txt içinde izinli olması da dizine alınacağını garanti etmez. WebSEORobot bu ayrımları raporda korur.</p></section>
+    <footer><a class="brand small" href="https://tezatlas.com">TezAtlas<span></span></a><p>WebSEORobot · MIT lisanslı açık kaynak</p><a href="https://github.com/tialkan/webseorobot">Kaynak kodu incele ↗</a></footer>
+  </main>
+  <script src="/webseorobot/app.js" defer></script>
+</body>
+</html>

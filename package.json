@@ -1,0 +1,37 @@
+{
+  "name": "webseorobot",
+  "version": "0.1.0",
+  "description": "Arama motorları ve kaynak gösteren yapay zekâ sistemleri için kanıta dayalı açık kaynak site denetleyicisi.",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "bin": {
+    "webseorobot": "./bin/webseorobot.js"
+  },
+  "scripts": {
+    "dev": "node --watch server/index.js",
+    "start": "node server/index.js",
+    "audit": "node bin/webseorobot.js",
+    "test": "node --test",
+    "check": "node --check server/index.js && node --check src/audit.js && node --check public/app.js && npm test"
+  },
+  "keywords": [
+    "seo",
+    "technical-seo",
+    "ai-crawlers",
+    "robots-txt",
+    "sitemap",
+    "canonical"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tialkan/webseorobot.git"
+  },
+  "homepage": "https://tezatlas.com/webseorobot",
+  "bugs": {
+    "url": "https://github.com/tialkan/webseorobot/issues"
+  }
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">WebSEORobot</title><desc id="desc">Sitenizi, kanıtıyla görün.</desc>
+  <rect width="1200" height="630" fill="#f6f1e6"/>
+  <rect x="54" y="50" width="1092" height="530" fill="#2c2470" stroke="#1d1a36" stroke-width="5"/>
+  <circle cx="1092" cy="84" r="225" fill="none" stroke="#f0607f" stroke-width="58"/>
+  <circle cx="956" cy="602" r="165" fill="none" stroke="#3dbfb3" stroke-width="48"/>
+  <circle cx="939" cy="119" r="27" fill="#3dbfb3"/>
+  <rect x="112" y="112" width="248" height="43" fill="#ffc23d"/>
+  <text x="131" y="141" font-family="monospace" font-size="19" font-weight="700" letter-spacing="3" fill="#1d1a36">WEBSEOROBOT · 0.1</text>
+  <text x="109" y="268" font-family="Arial,sans-serif" font-size="78" font-weight="800" fill="#fffdf8">Sitenizi,</text>
+  <text x="109" y="354" font-family="Arial,sans-serif" font-size="78" font-weight="800" fill="#ffc23d">kanıtıyla görün.</text>
+  <text x="113" y="419" font-family="monospace" font-size="23" fill="#d8d3f3">Canlı HTTP davranışına dayalı açık kaynak</text>
+  <text x="113" y="454" font-family="monospace" font-size="23" fill="#d8d3f3">SEO ve kaynak olabilirlik denetimi.</text>
+  <rect x="109" y="501" width="393" height="50" fill="#f0607f" stroke="#1d1a36" stroke-width="4"/>
+  <text x="131" y="534" font-family="monospace" font-size="19" font-weight="700" fill="#1d1a36">tezatlas.com/webseorobot →</text>
+</svg>
