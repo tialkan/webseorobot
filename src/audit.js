@@ -4,6 +4,7 @@ import { parseHtml, parseSitemap, sitemapLocations } from "./parser.js";
 import { inspectBotRules } from "./bots.js";
 import { calculateScores } from "./scoring.js";
 import { SOURCES } from "./sources.js";
+import { inspectLinks, linkCandidates } from "./links.js";
 
 const MAX_PAGES = Math.min(20, Math.max(1, Number(process.env.AUDIT_MAX_PAGES || 8)));
 const SEVERITY_ORDER = { "kritik": 0, "yüksek": 1, "orta": 2, "düşük": 3, "bilgi": 4 };
@@ -25,6 +26,7 @@ export async function auditSite(input, options = {}) {
   const llmsPromise = inspectLlms(canonicalBase);
   const parsedHome = parseHtml(main.result.body, main.result.url);
   const pages = [];
+  const parsedPages = [parsedHome];
   inspectPage(main.result, parsedHome, findings);
   pages.push(pageSummary(main.result, parsedHome));
 
@@ -39,14 +41,17 @@ export async function auditSite(input, options = {}) {
     }
     if (!/text\/html|application\/xhtml/i.test(fetched.result.headers["content-type"] || "")) continue;
     const parsed = parseHtml(fetched.result.body, fetched.result.url);
+    parsedPages.push(parsed);
     inspectPage(fetched.result, parsed, findings);
     pages.push(pageSummary(fetched.result, parsed));
   }
   inspectDuplicates(pages, findings);
+  const links = await inspectLinks(linkCandidates(canonicalBase, parsedPages, pages.map((page) => page.url)));
+  for (const link of links.filter((item) => item.durum === "kırık")) findings.push(finding("INTERNAL-LINK-BROKEN", "erisilebilirlik", "orta", "İç bağlantı kırık", `HTTP ${link.durumKodu}`, link.url, link.durumKodu, "Kullanıcı ve tarayıcı hedef içeriğe ulaşamaz.", "Bağlantıyı çalışan ilgili sayfaya yönlendirin veya artık gerekmiyorsa kaldırın; yönlendirme ve canlı yanıtı doğrulayın.", []));
   const [variants, llms] = await Promise.all([variantsPromise, llmsPromise]);
   inspectVariantConsistency(variants, findings);
   inspectEvidenceSignals(pages, findings);
-  return finalize({ target, main: main.result, findings, pages, variants, robots, sitemap, llms, started });
+  return finalize({ target, main: main.result, findings, pages, variants, robots, sitemap, llms, links, started });
 }
 
 async function inspectRobots(base, findings) {
@@ -162,7 +167,7 @@ function pageSummary(response, page) {
   return { url: response.url, status: response.status, title: page.title, description: page.descriptions[0] || "", canonical: page.canonicals[0] || "", lang: page.lang, wordCount: page.wordCount, h1Count: page.h1s.length, structuredDataBlocks: page.jsonLd.length, authorSignals: page.authorSignals, dateSignals: page.dateSignals, sourceSignals: page.sourceSignals, organizationSignals: page.organizationSignals };
 }
 
-function finalize({ target, main, findings, pages, variants, robots, sitemap, llms, started }) {
+function finalize({ target, main, findings, pages, variants, robots, sitemap, llms, links = [], started }) {
   const unique = [...new Map(findings.map((f) => [`${f.kod}:${f.kanit.url}:${f.kanit.bulunan || ""}`, f])).values()].sort((a, b) => SEVERITY_ORDER[a.seviye] - SEVERITY_ORDER[b.seviye]);
   return {
     surum: "0.1.0",
@@ -177,7 +182,8 @@ function finalize({ target, main, findings, pages, variants, robots, sitemap, ll
     sitemap,
     yapayZekaTarayicilari: robots?.botlar || inspectBotRules(""),
     llms,
-    sinirlar: ["JavaScript çalıştırılmaz.", `En fazla ${MAX_PAGES} sayfa incelenir.`, "İçerik doğruluğu ve özgünlüğü için insan incelemesi gerekir.", "llms.txt resmî bir sıralama standardı değildir.", "Rapor sıralama veya dizine alınma garantisi vermez."]
+    baglantilar: links,
+    sinirlar: ["JavaScript çalıştırılmaz.", `En fazla ${MAX_PAGES} sayfa ve 8 ek iç bağlantı incelenir.`, "Dış bağlantılar ve belirsiz HTTP durumları kırık bağlantı sayılmaz.", "İçerik doğruluğu ve özgünlüğü için insan incelemesi gerekir.", "llms.txt resmî bir sıralama standardı değildir.", "Rapor sıralama veya dizine alınma garantisi vermez."]
   };
 }
 

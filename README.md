@@ -30,6 +30,7 @@ node bin/webseorobot.js https://example.com --format markdown --output rapor.md
 - `robots.txt`, meta robots ve `X-Robots-Tag`
 - Canonical işaretleri ve canlı hedef davranışı
 - Sitemap varlığı, geçerliliği ve sınırlı URL örneklemi
+- En fazla sekiz ek iç bağlantıda canlı 404/410 kontrolü (403/429 ve ağ hataları kırık sayılmaz)
 - Başlıklar, açıklamalar, H1 yapısı, dil ve hreflang işaretleri
 - JSON-LD, sosyal paylaşım etiketleri ve görsel alt metinleri
 - Arama, kullanıcı adına erişim ve model geliştirme botları için robots tercihleri
