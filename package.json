@@ -19,7 +19,7 @@
     "README.md"
   ],
   "engines": {
-    "node": ">=20.11"
+    "node": ">=22.19"
   },
   "bin": {
     "webseorobot": "./bin/webseorobot.js"
@@ -46,5 +46,8 @@
   "homepage": "https://tezatlas.com/webseorobot",
   "bugs": {
     "url": "https://github.com/tialkan/webseorobot/issues"
+  },
+  "dependencies": {
+    "undici": "^8.11.2"
   }
 }

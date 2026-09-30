@@ -1,4 +1,4 @@
-import { assertPublicUrl } from "./security.js";
+import { assertPublicUrl, guvenliFetch } from "./security.js";
 
 const DEFAULT_LIMIT = Number(process.env.AUDIT_MAX_RESPONSE_BYTES || 2_000_000);
 const DEFAULT_TIMEOUT = Number(process.env.AUDIT_TIMEOUT_MS || 10_000);
@@ -13,7 +13,7 @@ export async function safeFetch(input, options = {}) {
     const timer = setTimeout(() => controller.abort(), options.timeout ?? DEFAULT_TIMEOUT);
     let response;
     try {
-      response = await fetch(current, {
+      response = await guvenliFetch(current, {
         method: options.method || "GET",
         redirect: "manual",
         signal: controller.signal,
